@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window Size</title>
+</head>
+<body>
+    <div class="div" style="background:skyblue; width:500px; height:300px; color:#fff;">
+
+    </div>
+    <script>
+        const div = document.querySelector('.div');
+        
+        function update(){
+            div.innerText = `
+            window.screenWidth : ${window.screen.width}  
+            window.screenHeight : ${window.screen.height}
+            window.outerWidth : ${window.outerWidth}
+            window.outerHeight : ${window.outerHeight}
+            window.innerWidth : ${window.innerWidth}
+            window.innerHeight : ${window.innerHeight}
+            window.clientWidth : ${document.documentElement.clientWidth}
+            window.clientHeight : ${document.documentElement.clientHeight}
+            `
+        }
+
+        window.addEventListener('resize', update)
+        update();
+        
+        /*
+        screen : 모니터 사이즈
+        outer : 페이지를 넘어선 브라우저 전체의 사이즈
+        inner : 브라우저 페이지에 표기되는 것(scroll bar 포함)
+        clientWidth(Height) : scroll bar 제외, 브라우저 페이지에 표기되는 것 
+        */
+    
+    </script>
+</body>
+</html>

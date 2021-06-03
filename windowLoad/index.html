@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window load</title>
+</head>
+<body>
+    
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded');
+        });
+        window.addEventListener('load', () => {
+            console.log('load');
+        })
+
+        /*
+        DOMContentLoaded : html만 다 완료되면 호출
+        load : css, img까지 다운로드되면 호출
+        
+        defer도 html만 다 완료되면 호출 됨
+        */
+
+        window.addEventListener('beforeunload', () => {
+            console.log('beforeunload')
+        })
+        window.addEventListener('unload', () => {
+            console.log('unload');
+        })
+        /*
+        beforeunload : 사용자가 페이지를 나갈 때, 나가기 전에 불려지는 함수(unload 전에)
+        unload : 페이지가 unload 불려지는 함수(모두 unload 한 후)
+        
+        defer을 사용하게 되면, contentloaded가 호출되기 이전에 먼저 실행됨
+        */
+
+    </script>
+</body>
+</html>

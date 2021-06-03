@@ -16,9 +16,18 @@
             background-color: #ccc;
             cursor: pointer;
         }
+        header {
+            position:fixed;
+            right:10px;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <button class="scrollBy">Scroll By 100px(y)</button>
+        <button class="scrollTo">Scroll to 100px(y)</button>
+        <button class="scrollInto">Scroll into special</button>
+    </header>
     <div></div>
     <div></div>
     <div></div>
@@ -28,6 +37,9 @@
     <div></div>
     <script>
         const div = document.querySelector('.special');
+        const by = document.querySelector('.scrollBy');
+        const to = document.querySelector('.scrollTo');
+        const into = document.querySelector('.scrollInto');
 
         div.addEventListener('click', (e) => {
             console.log(div.getBoundingClientRect());
@@ -44,6 +56,23 @@ page : ${e.pageX}, ${e.pageY}
         page x, y : 페이지 전체를 기준으로 문서 시작 지점부터 x와 y가 얼마나 떨어져 있는지
         
         둘 다 마우스 클릭한 좌표를 확인함
+        */
+
+        by.addEventListener('click', () => {
+            window.scrollBy(0, 100);  //scrollBy(top:100, left:100, behavior:'smooth')
+        })
+        to.addEventListener('click', () => {
+            window.scrollTo(0, 100);
+        })
+        into.addEventListener('click', () => {
+            div.scrollIntoView();
+        })
+
+        /*
+        scrollBy : 상대적 / 계속해서 누르면 스크롤 위치가 계속 변경
+        scrollTo : 절대적 / 계속눌러도 스크롤 위치는 그대로
+        srcollIntoView : 해당 요소로 스크롤 이동
+        
         */
     </script>
 </body>

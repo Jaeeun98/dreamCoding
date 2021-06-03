@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 좌표 찾기</title>
+    <style>
+        div {
+            width:200px;
+            height:200px;
+            background-color: #eee;
+            margin:10px;
+        }
+        .special {
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+    <script>
+        const div = document.querySelector('.special');
+
+        div.addEventListener('click', (e) => {
+            console.log(div.getBoundingClientRect());
+            console.log(`
+client : ${e.clientX}, ${e.clientY}
+page : ${e.pageX}, ${e.pageY}
+            `
+            )
+        })
+
+        /*
+        getBoundingClientRect : 요소의 좌표, 크기 등을 알 수 있음
+        client x, y : 브라우저 window 창에서 x와 y가 얼마나 떨어져 있는지(좌표값에 해당해서)
+        page x, y : 페이지 전체를 기준으로 문서 시작 지점부터 x와 y가 얼마나 떨어져 있는지
+        
+        둘 다 마우스 클릭한 좌표를 확인함
+        */
+    </script>
+</body>
+</html>

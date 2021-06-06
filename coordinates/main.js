@@ -16,12 +16,6 @@ document.addEventListener('mousemove', (e) => {
   yLine.style.transform = `translateX(${x}px)`;
   
   text.innerText = `${x}px, ${y}px`;
-  text.style.transform = `translate(${x - 40}px, ${y + 20}px)`;
+  text.style.transform = `translate(${x + 20}px, ${y-70}px)`;
    
  })
-
-
- /*
- 
- why position이 반드시 있어야 하는지
- */

@@ -14,15 +14,14 @@ form.addEventListener('submit', (e) => {
     div.appendChild(span);
     div.appendChild(del);
 
+    div.scrollIntoView({block:'center'});
+
     input.value = "";
     e.preventDefault();
-
+    
+    input.focus();
     del.addEventListener('click', delFun);
 })
 
-function delFun(e){
-    const del = e.target.parentNode;
-    del.remove();
-    
-}
+delFun = (e) => e.target.parentNode.remove();
 

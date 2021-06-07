@@ -11,23 +11,39 @@ h1 {
     color:#9985B2;
 }
 section {
+    text-align: left;
     background-color: #fff;
     width:300px;
     height:400px;
     border-radius: 10px;
     margin: auto;
+    padding:20px;
+    
+}
+section > div {
+    display:flex;
+    justify-content: space-between;
+    padding-bottom:20px;
+    line-height: 1.2;
+}
+
+
+section img {
+    width:20px;
+    height:20px; 
+    cursor: pointer;
 }
 
 .input {
     padding: 30px;
 }
-input {
+.text {
     border:none;
     width: 230px;
     padding:10px;
     border-radius: 10px;
 }
-button {
+.submit {
     border: none;
     font-size: 30px;
     background-color: #9985B2;
@@ -35,14 +51,15 @@ button {
     border-radius: 5px;
     color:#fff;
     vertical-align:bottom;
+    cursor: pointer;
 }
 
 
 @media(max-width:300px) {
     section {
-        width: 80%;
+        width: 70%;
     }
-    input {
+    .text {
         width: 90%;
         margin-bottom: 20px;
     }

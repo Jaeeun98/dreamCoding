@@ -4,6 +4,8 @@ const li = document.getElementsByTagName('li');
 const popup = document.querySelector('.popup');
 let resultCount = 0;
 
+
+
 function play(){
     for(let i=0; i<li.length; i++){
         const randomX = Math.floor(Math.random() * 730);
@@ -12,6 +14,8 @@ function play(){
         li[i].style.transform = `translate(${randomX}px, ${randomY}px)`;
     }  
     ul.style.display = 'block';
+
+    button[0].removeEventListener('click', play);
 }
 
 function replay(){
@@ -23,8 +27,17 @@ function replay(){
     play();
 }
 
-function del(e){
+function popupAdd(text){
     const result = document.querySelector('.result');
+
+    popup.style.display = 'block';
+    result.innerText = text
+    resultCount = 0; 
+}
+
+function del(e){
+    
+    const count = document.querySelector('.count');
 
     if(e.target.tagName !== 'IMG') return;
 
@@ -32,16 +45,11 @@ function del(e){
         e.path[1].style.display = 'none';
 
         resultCount++;
+        if(resultCount == 10)  popupAdd('You Win🥇');
+        
+    } else popupAdd('You Loser😂');
 
-        if(resultCount == 10) {
-            popup.style.display = 'block';
-            result.innerText = `You Win🥇 `;
-            resultCount = 0;
-        }
-    } else {
-        popup.style.display = 'block';
-        result.innerText = `You Loser😂 ` 
-    }
+    count.innerText = resultCount;
 }
 
 button[0].addEventListener('click', play);

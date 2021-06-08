@@ -2,9 +2,25 @@ const button = document.getElementsByTagName('button');
 const ul = document.getElementsByTagName('ul')[0];
 const li = document.getElementsByTagName('li');
 const popup = document.querySelector('.popup');
+const count = document.querySelector('.count');
+let timeout;
 let resultCount = 0;
 
-
+function timerCountDown(){
+    let timer = document.querySelector('.timer');
+    let timerCount = 10;
+    timer.innerText = `0:${timerCount}`;
+     
+    timeout = setInterval(() => {
+        timerCount--;
+        timer.innerText = `0:${timerCount}`;
+    
+        if(timerCount == 0){
+            clearInterval(timeout);
+            popupAdd('You Loser😂');
+        }
+    }, 1000)
+}
 
 function play(){
     for(let i=0; i<li.length; i++){
@@ -12,9 +28,13 @@ function play(){
         const randomY = Math.floor(Math.random() * 130);
 
         li[i].style.transform = `translate(${randomX}px, ${randomY}px)`;
-    }  
-    ul.style.display = 'block';
+    }
 
+    resultCount = 0;
+    count.innerText = resultCount;
+    
+    timerCountDown();
+    ul.style.display = 'block';
     button[0].removeEventListener('click', play);
 }
 
@@ -28,24 +48,21 @@ function replay(){
 }
 
 function popupAdd(text){
+    clearInterval(timeout);
+
     const result = document.querySelector('.result');
 
     popup.style.display = 'block';
     result.innerText = text
-    resultCount = 0; 
 }
 
 function del(e){
-    
-    const count = document.querySelector('.count');
-
     if(e.target.tagName !== 'IMG') return;
-
     if(e.target.getAttribute('alt') == 'carrot'){
         e.path[1].style.display = 'none';
 
         resultCount++;
-        if(resultCount == 10)  popupAdd('You Win🥇');
+        if(resultCount == 10) popupAdd('You Win🥇');
         
     } else popupAdd('You Loser😂');
 

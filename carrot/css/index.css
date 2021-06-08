@@ -13,6 +13,7 @@ section {
     margin: auto;
     text-align: center;
     font-size:30px;
+    
 }
 
 button {
@@ -53,13 +54,18 @@ header > div {
 }
 ul {
     height:100%;
+    display:none;
 }
 ul > li {
     position:absolute;
     cursor: pointer;
+    
 }
 .popup {
-    margin:30px auto;
+    position:absolute;
+    top:0;
+    left:31%;
+
     background-color: rgba(0, 0, 0, 0.85);
     width:300px;
     height:180px;

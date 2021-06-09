@@ -23,6 +23,17 @@ function timerCountDown(){
 }
 
 function play(){
+    if(button[0].className == `play stopBtn`){
+        button[0].innerHTML = `&#9632;`
+        clearInterval(timeout);
+        popupAdd('Replay?!');
+
+        return;
+    } else {
+        button[0].classList.add('stopBtn');
+        button[0].innerHTML = `&#9654;`
+    }
+
     for(let i=0; i<li.length; i++){
         const randomX = Math.floor(Math.random() * 730);
         const randomY = Math.floor(Math.random() * 130);
@@ -34,8 +45,7 @@ function play(){
     count.innerText = resultCount;
     
     timerCountDown();
-    ul.style.display = 'block';
-    button[0].removeEventListener('click', play);
+    ul.style.display = 'block';   
 }
 
 function replay(){
@@ -49,11 +59,19 @@ function replay(){
 
 function popupAdd(text){
     clearInterval(timeout);
+    button[0].classList.remove('stopBtn');
 
     const result = document.querySelector('.result');
 
     popup.style.display = 'block';
     result.innerText = text
+
+    text == 'You Win🥇' ? audioPlay('game_win') : audioPlay('bug_pull')
+}
+
+function audioPlay(sound){
+    const audio = new Audio(`sound/${sound}.mp3`);
+    audio.play();
 }
 
 function del(e){
@@ -63,6 +81,8 @@ function del(e){
 
         resultCount++;
         if(resultCount == 10) popupAdd('You Win🥇');
+
+        audioPlay('carrot_pull');
         
     } else popupAdd('You Loser😂');
 

@@ -40,7 +40,6 @@ function play(){
 
         li[i].style.transform = `translate(${randomX}px, ${randomY}px)`;
     }
-
     resultCount = 0;
     count.innerText = resultCount;
     
@@ -64,9 +63,9 @@ function popupAdd(text){
     const result = document.querySelector('.result');
 
     popup.style.display = 'block';
-    result.innerText = text
+    result.innerText = text;
 
-    text == 'You Win🥇' ? audioPlay('game_win') : audioPlay('bug_pull')
+    text == 'You Win🥇' ? audioPlay('game_win') : audioPlay('bug_pull');
 }
 
 function audioPlay(sound){
@@ -96,3 +95,17 @@ button[1].addEventListener('click', (e) => {
 ul.addEventListener('click', (e) => {
     del(e);
 })
+
+
+/*
+
+*css tip*
+
+css의 경우 크기나 색상 같은것은 root를 통해 변수로 만든 후 작성하는 것이 좋음
+▶와 같은 것들은 폰트어썸을 통해 만드는 것이좋음
+세로 정렬하는 방법 : inline-block or display:flex, colum으로 정렬
+position을 사용하지 않고, transform의 translate를 사용하면 위치를 이동시킬 수 있음
+
+
+
+*/

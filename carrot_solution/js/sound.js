@@ -30,11 +30,10 @@ export function stopBackground(){
     stopSound(bgSound);
 }
 
-export function playSound(sound){
+function playSound(sound){
     sound.currentTime = 0;
     sound.play();
 }
-
-export function stopSound(sound){
+function stopSound(sound){
     sound.pause();
 }

@@ -37,7 +37,6 @@ function onItemClick(item){
             finishGame(true)
         }
     } else if(item === 'bug'){
-        console.log('bug');
         finishGame(false);
     }  
 }
@@ -77,7 +76,7 @@ function finishGame(win){
     } else {
         sound.playBug();
     }
-    stopSound(bgSound);
+    sound.stopBackground();
     gameFinishBanner.showWithText(win ? 'YOU WON 🥇' : 'YOU LOST😂');
 }
 

@@ -11,7 +11,26 @@ export default class Field {
         this.bugCount = bugCount;
         this.field = document.querySelector('.field');
         this.fieldRect = this.field.getBoundingClientRect();
+        this.onClick = this.onClick.bind(this);
         this.field.addEventListener('click', this.onClick);
+        
+        /* 
+          클래스에 있는 함수를 인자로 전달하게 되면, 함수만 전달되고, class 정보는 함께 전달되지 않음
+          onClick = field 클래스 안에 있는 멤버 함수.
+          따라서 'this'가 붙은 것들은 정보가 없기 때문에 사용할 수 없음
+          클래스 정보를 무시하고 싶지 않다면 따로 조치를 취해줘야 함 = this 바인딩
+          this와 함수를 묶어 주는 것 = 바인딩
+          
+            방법1 : 직접적인 바인딩(bind 사용)
+            this.onClick = this.onClick.bind(this);
+
+            방법2 : 화살표 함수 / 화살표 함수는 this가 유지 됨
+            (event) => this.onClick(event);
+
+            방법3 : onClick 함수를 화살표 함수로 변수에 담기
+          */
+        
+
     }
 
     init(){
@@ -43,7 +62,7 @@ export default class Field {
         }
     }
 
-    onClick(event){
+    onClick = event => {
         const target = event.target;
         if(target.matches('.carrot')){
             target.remove();

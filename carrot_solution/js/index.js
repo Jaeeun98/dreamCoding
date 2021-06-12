@@ -2,6 +2,7 @@
 
 import Popup from './popup.js';
 import { GameBuilder, Reason } from './game.js'
+import * as sound from './sound.js';
 
 const gameFinishBanner = new Popup(); 
 const game = new GameBuilder()
@@ -14,13 +15,16 @@ game.setGameStopListener(reason => {
     let message;
     switch(reason){
         case Reason.cancel : 
-            message = 'Replay?'
+            message = 'Replay?';
+            sound.playAlert();
             break;
         case Reason.win : 
-            message = 'YOU WIN'
+            message = 'YOU WIN';
+            sound.playWin();
             break;
         case Reason.lose : 
-            message = 'YOU LOST'
+            message = 'YOU LOST';
+            sound.playBug();
             break;
         default:
             throw new Error('not valid reason') ;
